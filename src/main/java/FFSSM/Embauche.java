@@ -22,9 +22,8 @@ public class Embauche {
      * Termine cette embauche
      * @param dateFin la date à laquelle cette embauche est terminée
      */
-    public void terminer(LocalDate dateFin) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+    public void terminer(LocalDate dateFin) throws Exception{
+        this.setFin(dateFin);
     }
     
     /**
@@ -66,7 +65,10 @@ public class Embauche {
      *
      * @param fin new value of fin
      */
-    public void setFin(LocalDate fin) {
+    public void setFin(LocalDate fin) throws Exception{
+        if(fin.isBefore(this.getDebut())){
+            throw new Exception("La date de fin doit être après la date de début");
+        }
         this.fin = fin;
     }
 

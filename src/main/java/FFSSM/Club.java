@@ -16,6 +16,8 @@ public class Club {
     public String adresse;
 
     public String telephone;
+    
+    public Set<Plongee> myPlongees = new HashSet<>();
 
     public Club(Moniteur président, String nom, String telephone) {
         this.president = président;
@@ -30,17 +32,25 @@ public class Club {
      * @return l'ensemble des plongées non conformes
      */
     public Set<Plongee> plongeesNonConformes() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        Set<Plongee> plongeesNonConformes = new HashSet<>();
+        for(Plongee p : myPlongees){
+            if(!p.estConforme()){
+                plongeesNonConformes.add(p);
+            }
+        }
+        return plongeesNonConformes;
     }
 
     /**
      * Enregistre une nouvelle plongée organisée par ce club
      * @param p la nouvelle plongée
      */
-    public void organisePlongee(Plongee p) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+    public void organisePlongee(Plongee p) throws Exception{
+        if(myPlongees.contains(p)){
+            throw new Exception("La plongée est déjà dans la liste");
+            // Comme c'est une HashSet qui évite les doublons, je ne sais pas si cela est vraiment nécessaire
+        }
+        myPlongees.add(p);
     }
     
     
