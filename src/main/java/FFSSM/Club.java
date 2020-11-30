@@ -45,11 +45,7 @@ public class Club {
      * Enregistre une nouvelle plongée organisée par ce club
      * @param p la nouvelle plongée
      */
-    public void organisePlongee(Plongee p) throws Exception{
-        if(myPlongees.contains(p)){
-            throw new Exception("La plongée est déjà dans la liste");
-            // Comme c'est une HashSet qui évite les doublons, je ne sais pas si cela est vraiment nécessaire
-        }
+    public void organisePlongee(Plongee p) {
         myPlongees.add(p);
     }
     

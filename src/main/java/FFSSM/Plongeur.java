@@ -9,12 +9,14 @@ import java.util.List;
 public class Plongeur extends Personne{
     
     private int niveau;
-    
-    List<Licence> myLicences = new ArrayList<>();
+    private GroupeSanguin groupe;
+    List<Licence> myLicences;
 
-    public Plongeur(int niveau, String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance) {
+    public Plongeur(int niveau, String numeroINSEE, String nom, String prenom, String adresse, String telephone, LocalDate naissance,GroupeSanguin groupe) {
         super(numeroINSEE, nom, prenom, adresse, telephone, naissance);
         this.niveau = niveau;
+        this.myLicences= new ArrayList<>();
+        this.groupe=groupe;
     }
     
     public void ajouteLicence(String numero, LocalDate delivrance) throws Exception{
